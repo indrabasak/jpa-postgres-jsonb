@@ -1,0 +1,46 @@
+project:
+    artifactId: book
+    name: book
+    version: 1.0.0-SNAPSHOT
+    description: Demo project for info endpoint
+
+# For Spring Actuator /info endpoint
+info:
+    artifact: ${project.artifactId}
+    name: ${project.name}
+    description: ${project.description}
+    version: ${project.version}
+
+eureka:
+  instance:
+    # interval for periodic heartbeat to the registry; default 10
+    leaseRenewalIntervalInSeconds: 10
+  client:
+    enabled: true
+    registryFetchIntervalSeconds: 5
+    # by default, Eureka uses the client heartbeat to determine if a client is up. Unless specified otherwise the
+    # Discovery Client will not propagate the current health check status of the application.
+    # should only be set in application.yml
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: ${EUREKA_ZONE}
+
+# use a HTTP port 8080
+server:
+  port: 8080
+
+#Postgres persistence
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    platform: POSTGRESQL
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    show-sql: true
+    hibernate:
+#      ddl-auto: create-drop
+      dialect: org.hibernate.dialect.PostgreSQLDialect

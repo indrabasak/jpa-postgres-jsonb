@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" monitorInterval="30">
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd'T'HH:mm:ss.SSSZZ}: [%p] %t %c - %m%n"/>
+        </Console>
+        <Console name="STDERR" target="SYSTEM_ERR">
+            <PatternLayout pattern="%d{yyyy-MM-dd'T'HH:mm:ss.SSSZZ}: [%p] %t %c - %m%n"/>
+        </Console>
+        <Async name="asyncManager" blocking="false" bufferSize="1024">
+            <AppenderRef ref="STDOUT"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+
+        <Logger name="com.basaki" additivity="false" level="warn">
+            <AppenderRef ref="asyncManager"/>
+        </Logger>
+        <Root level="warn">
+            <AppenderRef ref="asyncManager"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
