@@ -1,4 +1,4 @@
-package com.basaki.example.postgres.util;
+package com.basaki.example.postgres.jsonb.util;
 
 import java.util.UUID;
 import org.dozer.BeanFactory;

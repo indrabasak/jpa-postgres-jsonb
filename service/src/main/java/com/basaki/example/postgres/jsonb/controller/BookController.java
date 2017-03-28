@@ -1,9 +1,9 @@
-package com.basaki.example.postgres.controller;
+package com.basaki.example.postgres.jsonb.controller;
 
-import com.basaki.example.postgres.spring.jsonb.model.Book;
-import com.basaki.example.postgres.spring.jsonb.model.BookRequest;
-import com.basaki.example.postgres.spring.jsonb.model.Genre;
-import com.basaki.example.postgres.service.BookService;
+import com.basaki.example.postgres.jsonb.model.Book;
+import com.basaki.example.postgres.jsonb.model.BookRequest;
+import com.basaki.example.postgres.jsonb.model.Genre;
+import com.basaki.example.postgres.jsonb.service.BookService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

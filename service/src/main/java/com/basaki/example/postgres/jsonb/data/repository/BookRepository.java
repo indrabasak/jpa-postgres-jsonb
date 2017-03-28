@@ -1,6 +1,6 @@
-package com.basaki.example.postgres.data.repository;
+package com.basaki.example.postgres.jsonb.data.repository;
 
-import com.basaki.example.postgres.data.entity.BookEntity;
+import com.basaki.example.postgres.jsonb.data.entity.BookEntity;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;

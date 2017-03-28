@@ -1,6 +1,6 @@
-package com.basaki.example.postgres.config;
+package com.basaki.example.postgres.jsonb.config;
 
-import com.basaki.example.postgres.util.UuidBeanFactory;
+import com.basaki.example.postgres.jsonb.util.UuidBeanFactory;
 import java.util.UUID;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;

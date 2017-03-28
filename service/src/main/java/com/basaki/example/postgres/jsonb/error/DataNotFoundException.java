@@ -1,4 +1,4 @@
-package com.basaki.example.postgres.error;
+package com.basaki.example.postgres.jsonb.error;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

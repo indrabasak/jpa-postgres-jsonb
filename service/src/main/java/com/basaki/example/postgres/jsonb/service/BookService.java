@@ -1,12 +1,12 @@
-package com.basaki.example.postgres.service;
+package com.basaki.example.postgres.jsonb.service;
 
-import com.basaki.example.postgres.data.entity.BookEntity;
-import com.basaki.example.postgres.data.repository.BookRepository;
-import com.basaki.example.postgres.error.DataNotFoundException;
-import com.basaki.example.postgres.spring.jsonb.model.Author;
-import com.basaki.example.postgres.spring.jsonb.model.Book;
-import com.basaki.example.postgres.spring.jsonb.model.BookRequest;
-import com.basaki.example.postgres.spring.jsonb.model.Genre;
+import com.basaki.example.postgres.jsonb.data.entity.BookEntity;
+import com.basaki.example.postgres.jsonb.data.repository.BookRepository;
+import com.basaki.example.postgres.jsonb.error.DataNotFoundException;
+import com.basaki.example.postgres.jsonb.model.Author;
+import com.basaki.example.postgres.jsonb.model.Book;
+import com.basaki.example.postgres.jsonb.model.BookRequest;
+import com.basaki.example.postgres.jsonb.model.Genre;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;

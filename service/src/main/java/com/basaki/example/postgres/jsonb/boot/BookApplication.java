@@ -1,4 +1,4 @@
-package com.basaki.example.postgres.boot;
+package com.basaki.example.postgres.jsonb.boot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,15 +16,15 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @SpringBootApplication
 @ComponentScan(basePackages = {
-        "com.basaki.example.postgres.config",
-        "com.basaki.example.postgres.controller",
-        "com.basaki.example.postgres.data.entity",
-        "com.basaki.example.postgres.data.repository",
-        "com.basaki.example.postgres.error",
+        "com.basaki.example.postgres.jsonb.config",
+        "com.basaki.example.postgres.jsonb.controller",
+        "com.basaki.example.postgres.jsonb.data.entity",
+        "com.basaki.example.postgres.jsonb.data.repository",
+        "com.basaki.example.postgres.jsonb.error",
         "com.basaki.example.postgres.spring.jsonb.model",
-        "com.basaki.example.postgres.service"})
-@EntityScan(basePackages = "com.basaki.example.postgres.data.entity")
-@EnableJpaRepositories(basePackages = {"com.basaki.example.postgres.data.repository"})
+        "com.basaki.example.postgres.jsonb.service"})
+@EntityScan(basePackages = "com.basaki.example.postgres.jsonb.data.entity")
+@EnableJpaRepositories(basePackages = {"com.basaki.example.postgres.jsonb.data.repository"})
 public class BookApplication {
     public static void main(String[] args) {
         SpringApplication.run(BookApplication.class, args);

@@ -1,7 +1,7 @@
-package com.basaki.example.postgres.data.entity;
+package com.basaki.example.postgres.jsonb.data.entity;
 
-import com.basaki.example.postgres.spring.jsonb.model.Author;
-import com.basaki.example.postgres.spring.jsonb.model.Genre;
+import com.basaki.example.postgres.jsonb.model.Author;
+import com.basaki.example.postgres.jsonb.model.Genre;
 import java.io.Serializable;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -41,9 +41,9 @@ public class BookEntity implements Serializable {
     private String title;
 
     @Column(name = "genre", nullable = false)
-    @Type(type = "com.basaki.example.postgres.data.usertype.PGEnumUserType",
+    @Type(type = "com.basaki.example.postgres.jsonb.data.usertype.PGEnumUserType",
             parameters = {@Parameter(name = "enumClassName",
-                    value = "com.basaki.example.postgres.spring.jsonb.model.Genre")})
+                    value = "com.basaki.example.postgres.jsonb.model.Genre")})
     private Genre genre;
 
     @Column(name = "publisher", nullable = false)
@@ -53,8 +53,8 @@ public class BookEntity implements Serializable {
     private int star;
 
     @Column(name = "author", nullable = false)
-    @Type(type = "com.basaki.example.postgres.data.usertype.JsonbUserType",
+    @Type(type = "com.basaki.example.postgres.jsonb.data.usertype.JsonbUserType",
             parameters = {@Parameter(name = "className",
-                    value = "com.basaki.example.postgres.spring.jsonb.model.Author")})
+                    value = "com.basaki.example.postgres.jsonb.model.Author")})
     private Author author;
 }

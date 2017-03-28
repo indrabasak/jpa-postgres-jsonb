@@ -1,4 +1,4 @@
-package com.basaki.example.postgres.error;
+package com.basaki.example.postgres.jsonb.error;
 
 /**
  * Created by indra.basak on 3/8/17.

@@ -1,4 +1,4 @@
-package com.basaki.example.postgres.config;
+package com.basaki.example.postgres.jsonb.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +34,7 @@ public class SwaggerConfiguration {
                 .groupName("book")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(
-                        "com.basaki.example.postgres.controller"))
+                        "com.basaki.example.postgres.jsonb.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo("Book API with Postgres JSONB",

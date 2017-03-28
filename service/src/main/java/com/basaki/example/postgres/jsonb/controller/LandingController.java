@@ -1,4 +1,4 @@
-package com.basaki.example.postgres.controller;
+package com.basaki.example.postgres.jsonb.controller;
 
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;

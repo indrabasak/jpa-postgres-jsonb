@@ -29,7 +29,7 @@ mvn clean install
 ```
 
 ### Start the Service
-The main entry point `jpa-postgres-jsonb` example is `com.basaki.example.postgres.boot.BookApplication` class.
+The main entry point `jpa-postgres-jsonb` example is `com.basaki.example.postgres.jsonb.boot.BookApplication` class.
 You can start the application from an IDE by starting the `BookApplication` class.
 ```
 

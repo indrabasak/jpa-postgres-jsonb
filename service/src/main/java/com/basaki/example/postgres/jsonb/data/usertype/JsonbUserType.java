@@ -1,4 +1,4 @@
-package com.basaki.example.postgres.data.usertype;
+package com.basaki.example.postgres.jsonb.data.usertype;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
