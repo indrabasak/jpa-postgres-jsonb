@@ -18,6 +18,14 @@ import org.hibernate.usertype.UserType;
 /**
  * Created by indra.basak on 3/13/17.
  */
+
+/**
+ * {@code JsonbUserType} converts a Postgres JSONB data type to a Java object
+ * and vice versa
+ * <p/>
+ *
+ * @since 3/13/17
+ */
 public class JsonbUserType implements UserType, ParameterizedType {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
