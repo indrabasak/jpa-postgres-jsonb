@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * {@code BookApplication} represents the entry point for book controller
@@ -23,8 +24,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "com.basaki.example.postgres.jsonb.error",
         "com.basaki.example.postgres.spring.jsonb.model",
         "com.basaki.example.postgres.jsonb.service"})
-@EntityScan(basePackages = "com.basaki.example.postgres.jsonb.data.entity")
-@EnableJpaRepositories(basePackages = {"com.basaki.example.postgres.jsonb.data.repository"})
 public class BookApplication {
     public static void main(String[] args) {
         SpringApplication.run(BookApplication.class, args);

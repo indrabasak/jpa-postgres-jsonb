@@ -1,9 +1,5 @@
 package com.basaki.example.postgres.jsonb.error;
 
-/**
- * Created by indra.basak on 3/8/17.
- */
-
 import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -46,8 +42,7 @@ public class ExceptionProcessor {
 
     /**
      * Handles <tt>IllegalArgumentException</tt> exception.It unwraps the root
-     * case
-     * and coverts it into an <tt>ErrorInfo</tt> object.
+     * case and coverts it into an <tt>ErrorInfo</tt> object.
      *
      * @param req HTTP request to extract the URL
      * @param ex  exception to be processed
@@ -58,6 +53,25 @@ public class ExceptionProcessor {
     @ResponseBody
     public ErrorInfo handleIllegalArgException(HttpServletRequest req,
             IllegalArgumentException ex) {
+        ErrorInfo info = getErrorInfo(req, HttpStatus.BAD_REQUEST);
+        info.setMessage(ex.getMessage());
+
+        return info;
+    }
+
+    /**
+     * Handles <tt>IllegalStateException</tt> exception.It unwraps the root
+     * case and coverts it into an <tt>ErrorInfo</tt> object.
+     *
+     * @param req HTTP request to extract the URL
+     * @param ex  exception to be processed
+     * @return ths error information that is sent to the client
+     */
+    @ExceptionHandler(IllegalStateException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorInfo handleIllegalStateException(HttpServletRequest req,
+            IllegalStateException ex) {
         ErrorInfo info = getErrorInfo(req, HttpStatus.BAD_REQUEST);
         info.setMessage(ex.getMessage());
 

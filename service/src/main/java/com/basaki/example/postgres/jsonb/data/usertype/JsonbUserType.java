@@ -16,10 +16,6 @@ import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
 
 /**
- * Created by indra.basak on 3/13/17.
- */
-
-/**
  * {@code JsonbUserType} converts a Postgres JSONB data type to a Java object
  * and vice versa
  * <p/>
@@ -55,7 +51,10 @@ public class JsonbUserType implements UserType, ParameterizedType {
 
     @Override
     public boolean equals(Object x, Object y) throws HibernateException {
-        return x == y;
+        //equality operator (==) will cause extra update during delete
+        //Please see TypeHelper.findDirty()
+        //return x == y;
+        return x.equals(y);
     }
 
     @Override

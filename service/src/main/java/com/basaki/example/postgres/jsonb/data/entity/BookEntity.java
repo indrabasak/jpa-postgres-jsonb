@@ -1,5 +1,6 @@
 package com.basaki.example.postgres.jsonb.data.entity;
 
+import com.basaki.example.postgres.jsonb.data.util.DirtyStateIdentifiable;
 import com.basaki.example.postgres.jsonb.model.Author;
 import com.basaki.example.postgres.jsonb.model.Genre;
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,7 +30,7 @@ import org.hibernate.annotations.Type;
 @AllArgsConstructor
 @Entity
 @Table(name = "books", schema = "example_jsonb")
-public class BookEntity implements Serializable {
+public class BookEntity implements Serializable, DirtyStateIdentifiable {
 
     @Id
     @Column(name = "id")
@@ -57,4 +59,7 @@ public class BookEntity implements Serializable {
             parameters = {@Parameter(name = "className",
                     value = "com.basaki.example.postgres.jsonb.model.Author")})
     private Author author;
+
+    @Transient
+    private boolean dirty;
 }

@@ -55,8 +55,8 @@ public class BookController {
             notes = "Requires a book title, genre, publisher, star, and author.",
             response = Book.class)
     @ApiResponses({
-            @ApiResponse(code = 201, response = Override.class,
-                    message = "Override override created successfully")})
+            @ApiResponse(code = 201, response = Book.class,
+                    message = "Book created successfully")})
     @RequestMapping(method = RequestMethod.POST, value = BOOK_URL,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -101,6 +101,19 @@ public class BookController {
             @RequestParam(value = "firstName", required = false) String firstName,
             @RequestParam(value = "lastName", required = false) String lastName) {
         return service.getByAuthor(firstName, lastName);
+    }
+
+    @ApiOperation(value = "Updates a book.", response = Book.class)
+    @ApiResponses({
+            @ApiResponse(code = 201, response = Book.class,
+                    message = "Updated a book created successfully")})
+    @RequestMapping(method = RequestMethod.PUT, value = BOOK_BY_ID_URL,
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public Book update(@PathVariable("id") UUID id,
+            @RequestBody BookRequest request) {
+        return service.update(id, request);
     }
 
     @ApiOperation(value = "Deletes a book by ID.")

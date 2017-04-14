@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.startsWith;
@@ -25,7 +26,7 @@ import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatc
  * <p/>
  *
  * @author Indra Basak
- * @sice 3/13/17
+ * @since 3/13/17
  */
 @Service
 @Slf4j
@@ -42,24 +43,25 @@ public class BookService {
         this.mapper = mapper;
     }
 
+    @Transactional
     public Book create(BookRequest request) {
-        Assert.notNull(request.getTitle(), "Title should not be null.");
-        Assert.notNull(request.getGenre(), "Genre should not be null.");
-        Assert.notNull(request.getPublisher(), "Publisher should not be null.");
-        Assert.notNull(request.getAuthor(), "Author should not be null.");
-        Assert.state((request.getStar() > 0 && request.getStar() <= 5),
-                "Star should be between 1 and 5");
-
-        BookEntity record = mapper.map(request, BookEntity.class);
-        record = repo.save(record);
-        Book book = mapper.map(record, Book.class);
+        validate(request);
+        BookEntity entity = mapper.map(request, BookEntity.class);
+        entity = repo.save(entity);
+        Book book = mapper.map(entity, Book.class);
 
         return book;
     }
 
     public Book getById(UUID id) {
-        BookEntity record = repo.findOne(id);
-        Book book = mapper.map(record, Book.class);
+        BookEntity entity = repo.findOne(id);
+
+        if (entity == null) {
+            throw new DataNotFoundException(
+                    "Book with id " + id + " not found!");
+        }
+
+        Book book = mapper.map(entity, Book.class);
 
         return book;
     }
@@ -111,16 +113,51 @@ public class BookService {
         }
     }
 
-    public void delete(UUID id) {
-        repo.delete(id);
+    @Transactional
+    public Book update(UUID id, BookRequest request) {
+        BookEntity entity = repo.findOne(id);
+
+        if (entity == null) {
+            throw new DataNotFoundException(
+                    "Book with id " + id + " not found!");
+        }
+
+        validate(request);
+        mapper.map(request, entity);
+        entity.setDirty(true);
+        entity = repo.save(entity);
+
+        Book book = mapper.map(entity, Book.class);
+
+        return book;
     }
 
+    @Transactional
+    public void delete(UUID id) {
+        try {
+            repo.delete(id);
+        } catch (Exception e) {
+            throw new DataNotFoundException(
+                    "Book with id " + id + " not found!");
+        }
+    }
+
+    @Transactional
     public void deleteAll() {
         repo.deleteAll();
     }
 
     public List<String> getPublisher(String publisher) {
         return repo.findDistinctPublisher(publisher);
+    }
+
+    private void validate(BookRequest request) {
+        Assert.notNull(request.getTitle(), "Title should not be null.");
+        Assert.notNull(request.getGenre(), "Genre should not be null.");
+        Assert.notNull(request.getPublisher(), "Publisher should not be null.");
+        Assert.notNull(request.getAuthor(), "Author should not be null.");
+        Assert.state((request.getStar() > 0 && request.getStar() <= 5),
+                "Star should be between 1 and 5");
     }
 
     private List<Book> map(List<BookEntity> entities) {

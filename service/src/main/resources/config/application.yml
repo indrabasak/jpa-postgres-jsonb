@@ -30,17 +30,21 @@ eureka:
 server:
   port: 8080
 
-#Postgres persistence
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: postgres
-    platform: POSTGRESQL
-    testWhileIdle: true
-    validationQuery: SELECT 1
-  jpa:
-    show-sql: true
-    hibernate:
-#      ddl-auto: create-drop
-      dialect: org.hibernate.dialect.PostgreSQLDialect
+datasource:
+  url: jdbc:postgresql://localhost:5432/postgres
+  username: postgres
+  password: postgres
+  validationQuery: SELECT 1
+  initialSize: 1
+  maxActive: 3
+  testWhileIdle: true
+  testOnBorrow: true
+
+jpa:
+  show-sql: true
+  format_sql: true
+  properties:
+    org:
+      hibernate:
+        flushMode: AUTO
+        entity_dirtiness_strategy: com.basaki.example.postgres.jsonb.data.util.EntityDirtinessStrategy

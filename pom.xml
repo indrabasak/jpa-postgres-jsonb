@@ -17,6 +17,7 @@
         <spring.cloud.version>Camden.RELEASE</spring.cloud.version>
         <swagger.version>2.5.0</swagger.version>
         <wiremock.version>2.0.10-beta</wiremock.version>
+        <commons.dbcp.version>1.4</commons.dbcp.version>
     </properties>
 
     <dependencies>
