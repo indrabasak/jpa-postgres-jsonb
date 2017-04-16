@@ -1,4 +1,4 @@
-package com.basaki.example.postgres.jsonb.data.util;
+package com.basaki.example.postgres.jsonb.data.strategy;
 
 /**
  * {@code DirtyStateIdentifiable} should be implemented by all entities where

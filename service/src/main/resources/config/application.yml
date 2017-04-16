@@ -47,4 +47,4 @@ jpa:
     org:
       hibernate:
         flushMode: AUTO
-        entity_dirtiness_strategy: com.basaki.example.postgres.jsonb.data.util.EntityDirtinessStrategy
+        entity_dirtiness_strategy: com.basaki.example.postgres.jsonb.data.strategy.EntityDirtinessStrategy

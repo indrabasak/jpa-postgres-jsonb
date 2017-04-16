@@ -98,7 +98,7 @@ public class DataConfiguration {
     @Value("${jpa.properties.org.hibernate.flushMode:COMMIT}")
     private String flushMode;
 
-    @Value("${jpa.properties.hibernate.entity_dirtiness_strategy:com.basaki.example.postgres.jsonb.data.util.EntityDirtinessStrategy}")
+    @Value("${jpa.properties.hibernate.entity_dirtiness_strategy:com.basaki.example.postgres.jsonb.data.strategy.EntityDirtinessStrategy}")
     private String dirtinessStrategy;
 
 

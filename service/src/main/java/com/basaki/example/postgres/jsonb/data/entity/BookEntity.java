@@ -1,6 +1,6 @@
 package com.basaki.example.postgres.jsonb.data.entity;
 
-import com.basaki.example.postgres.jsonb.data.util.DirtyStateIdentifiable;
+import com.basaki.example.postgres.jsonb.data.strategy.DirtyStateIdentifiable;
 import com.basaki.example.postgres.jsonb.model.Author;
 import com.basaki.example.postgres.jsonb.model.Genre;
 import java.io.Serializable;
