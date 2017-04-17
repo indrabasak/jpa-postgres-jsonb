@@ -4,11 +4,11 @@ JPA PostgreSQL Spring Service Example with JSONB Column Type and Query By Exampl
 =================================================================================
 This is a [**Spring Boot**](https://projects.spring.io/spring-boot/) based microservice example backed by
 [**PostgreSQL**](https://www.postgresql.org/) database. This examples shows how to do the following:
-* Use `spring.datasource` properties and Spring Data auto configuration.
-* Use JPA's `JpaRepository`
+* Use `DBCP datasource` with Java configuration.
+* Use `Custom Repository` to expose `entity manager`.
 * Insert `UUID` field in Postgres database and generate `UUID `index.
 * Convert Java `Enum` to Postgres `Enum` type.
-* Convert Java `Object` to Postgres `JSONB` type
+* Convert Java `Object` to Postgres `JSONB` type.
 * Use [`JPA Query by Example`](https://github.com/spring-projects/spring-data-commons/blob/master/src/main/asciidoc/query-by-example.adoc)
 * Use [`Dozer`](http://dozer.sourceforge.net/) Java Bean mapper.
 

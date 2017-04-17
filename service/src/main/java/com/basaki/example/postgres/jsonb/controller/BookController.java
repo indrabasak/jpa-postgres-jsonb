@@ -72,8 +72,8 @@ public class BookController {
     @RequestMapping(method = RequestMethod.GET, value = BOOK_BY_ID_URL,
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
-    public Book getById(@PathVariable("id") UUID id) {
-        return service.getById(id);
+    public Book read(@PathVariable("id") UUID id) {
+        return service.read(id);
     }
 
     @ApiOperation(
@@ -83,24 +83,24 @@ public class BookController {
     @RequestMapping(method = RequestMethod.GET, value = BOOK_URL,
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
-    public List<Book> get(
+    public List<Book> readAll(
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "genre", required = false) Genre genre,
             @RequestParam(value = "publisher", required = false) String publisher) {
-        return service.get(title, genre, publisher, null);
+        return service.readAll(title, genre, publisher, null);
     }
 
     @ApiOperation(
-            value = "Retrieves all books ny authot's first name or/and last name",
+            value = "Retrieves all books any author's first name or/and last name",
             notes = "In absence of any parameter, it will return no books.",
             response = Book.class, responseContainer = "List")
     @RequestMapping(method = RequestMethod.GET, value = BOOK_BY_AUTHOR_URL,
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
-    public List<Book> getByAuthor(
+    public List<Book> readByAuthor(
             @RequestParam(value = "firstName", required = false) String firstName,
             @RequestParam(value = "lastName", required = false) String lastName) {
-        return service.getByAuthor(firstName, lastName);
+        return service.readByAuthor(firstName, lastName);
     }
 
     @ApiOperation(value = "Updates a book.", response = Book.class)
@@ -119,7 +119,7 @@ public class BookController {
     @ApiOperation(value = "Deletes a book by ID.")
     @RequestMapping(method = RequestMethod.DELETE, value = BOOK_BY_ID_URL)
     @ResponseBody
-    public void deleteById(@PathVariable("id") UUID id) {
+    public void delete(@PathVariable("id") UUID id) {
         service.delete(id);
     }
 

@@ -50,39 +50,39 @@ public class BookControllerUnitTests {
     }
 
     @Test
-    public void testGetById() {
+    public void testRead() {
         Book book = getBook();
-        when(service.getById(any(UUID.class))).thenReturn(book);
+        when(service.read(any(UUID.class))).thenReturn(book);
 
-        Book returnedObj = controller.getById(book.getId());
+        Book returnedObj = controller.read(book.getId());
         validate(book, returnedObj);
     }
 
     @Test
-    public void testGet() {
+    public void testReadAll() {
         Book book = getBook();
         List<Book> books = new ArrayList<>();
         books.add(book);
-        when(service.get(any(String.class), any(Genre.class), any(String.class),
+        when(service.readAll(any(String.class), any(Genre.class), any(String.class),
                 any(Author.class))).thenReturn(books);
 
         List<Book> returnedObjs =
-                controller.get(book.getTitle(), book.getGenre(),
+                controller.readAll(book.getTitle(), book.getGenre(),
                         book.getPublisher());
         assertEquals(1, returnedObjs.size());
         validate(book, returnedObjs.get(0));
     }
 
     @Test
-    public void testGetByAuthor() {
+    public void testReadByAuthor() {
         Book book = getBook();
         List<Book> books = new ArrayList<>();
         books.add(book);
-        when(service.getByAuthor(any(String.class),
+        when(service.readByAuthor(any(String.class),
                 any(String.class))).thenReturn(books);
 
         List<Book> returnedObjs =
-                controller.getByAuthor("john", "doe");
+                controller.readByAuthor("john", "doe");
         assertEquals(1, returnedObjs.size());
         validate(book, returnedObjs.get(0));
     }
@@ -99,10 +99,10 @@ public class BookControllerUnitTests {
     }
 
     @Test
-    public void testDeleteById() {
+    public void testDelete() {
         doNothing().when(service).delete(any(UUID.class));
 
-        controller.deleteById(UUID.randomUUID());
+        controller.delete(UUID.randomUUID());
     }
 
     @Test

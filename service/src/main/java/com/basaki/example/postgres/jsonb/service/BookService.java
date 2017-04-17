@@ -53,7 +53,7 @@ public class BookService {
         return book;
     }
 
-    public Book getById(UUID id) {
+    public Book read(UUID id) {
         BookEntity entity = repo.findOne(id);
 
         if (entity == null) {
@@ -66,7 +66,7 @@ public class BookService {
         return book;
     }
 
-    public List<Book> get(String title, Genre genre, String publisher,
+    public List<Book> readAll(String title, Genre genre, String publisher,
             Author author) {
 
         if (title == null && genre == null && publisher == null && author == null) {
@@ -97,7 +97,7 @@ public class BookService {
         return map(repo.findAll(example));
     }
 
-    public List<Book> getByAuthor(String firstName, String lastName) {
+    public List<Book> readByAuthor(String firstName, String lastName) {
         if (firstName == null && lastName == null) {
             throw new IllegalArgumentException(
                     "Please specify either author's first name or last name or both!");
