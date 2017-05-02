@@ -1,5 +1,7 @@
 [![Build Status][travis-badge]][travis-badge-url]
 
+![](./img/postgres.png)
+
 JPA PostgreSQL Spring Service Example with JSONB Column Type and Query By Example
 =================================================================================
 This is a [**Spring Boot**](https://projects.spring.io/spring-boot/) based microservice example backed by
